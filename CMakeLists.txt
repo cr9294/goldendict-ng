@@ -33,6 +33,7 @@ endif ()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /NODEFAULTLIB:MSVCRT /NODEFAULTLIB:LIBCMT")
 
 #### Qt
 
@@ -99,6 +100,14 @@ set(QSINGLEAPP_SOURCE_FILES
 )
 
 qt_add_executable(${GOLDENDICT})
+target_include_directories(${GOLDENDICT} PRIVATE D:/IDLE/FFmpeg/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/include)
+target_link_libraries(${GOLDENDICT} PRIVATE
+        D:/IDLE/FFmpeg/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/lib/avcodec.lib
+        D:/IDLE/FFmpeg/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/lib/avformat.lib
+        D:/IDLE/FFmpeg/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/lib/avutil.lib
+        D:/IDLE/FFmpeg/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/lib/swresample.lib)
+
+
 
 target_sources(${GOLDENDICT} PRIVATE
         icons/flags.qrc
